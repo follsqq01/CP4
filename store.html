@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CODEGRID | PROJECT HOVER ANIMATION</title>
+    <link rel="stylesheet" href="stylesheets/store.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+        <style>
+      body {
+        opacity: 0;
+        transition: opacity 0.8s ease;
+        background: #39bb25; /* цвет затухания */
+      }
+
+      body.fade-in {
+        opacity: 1;
+      }
+
+      body.fade-out {
+        opacity: 0;
+        background: #39bb25; /* цвет затухания */
+        transition: opacity 0.8s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-content">
+      <!-- Left section with image and overlay -->
+      <div class="left-section" id="leftSection">
+        <img src="img/forstore.png" alt="Event Background" />
+        <div class="overlay">
+          <img class="logo" src="img/logo.svg" alt="Logo" />
+          <!-- <p class="lefting">
+            25 / 26 year<br />
+            We are waiting for you<br />
+            at each of our events!
+          </p> -->
+        </div>
+      </div>
+
+      <!-- Right section with navigation and project list -->
+      <div class="right-container" id="rightContainer">
+        <nav>
+          <a href="events.html" class="nav-link link-transition active"
+            >events</a
+          >
+          <a href="store.html" class="nav-link link-transition">store</a>
+          <a href="gallery.html" class="nav-link link-transition">gallery</a>
+        </nav>
+        <div class="preview">
+          <div class="preview-img"></div>
+        </div>
+        <div class="container">
+          <div class="projects">
+            <div class="project" id="header">
+              <div class="client">
+                <p>Item</p>
+              </div>
+              <div class="year">
+                <p>Price</p>
+              </div>
+            </div>
+            <div class="project" id="p1" data-img="img/jewelry1.png" data-link="jewelry1.html">
+              <div class="client">
+                <p>Red Apple Ring</p>
+              </div>
+              <div class="year">
+                <p>60$</p>
+              </div>
+              <div class="description">
+                A silver ring in the shape of a red apple that burns with your
+                passion. Silver embraces the bright scarlet fruit, as if
+                whispering: be bold, but with grace. This is your talisman of
+                freedom — for those who want to stand out without shouting.
+                Luxury available to anyone who dreams of leaving a mark.
+              </div>
+            </div>
+            <div class="project" id="p2" data-img="img/jewelry2.png">
+              <div class="client">
+                <p>Sign Moon Ring</p>
+              </div>
+              <div class="year">
+                <p>45$</p>
+              </div>
+              <div class="description">
+                A mystical ring shaped like a crescent moon, crafted from
+                sterling silver. Perfect for those who seek elegance under the
+                night sky. A symbol of intuition and serenity, available to
+                those who cherish quiet strength.
+              </div>
+            </div>
+            <div class="project" id="p3" data-img="img/jewelry3.png">
+              <div class="client">
+                <p>Earrings First Party</p>
+              </div>
+              <div class="year">
+                <p>55$</p>
+              </div>
+              <div class="description">
+                Elegant drop earrings designed for your first celebration.
+                Crafted with sparkling crystals, they add a touch of glamour to
+                any occasion. Ideal for those who love to shine with understated
+                sophistication.
+              </div>
+            </div>
+            <div class="project" id="p4" data-img="img/jewelry4.png">
+              <div class="client">
+                <p>Pink Crystal Drop Earrings</p>
+              </div>
+              <div class="year">
+                <p>40$</p>
+              </div>
+              <div class="description">
+                Stunning earrings featuring pink crystals that catch the light.
+                Perfect for adding a pop of color to your style. A luxurious yet
+                accessible choice for those who embrace bold femininity.
+              </div>
+            </div>
+            <div class="project" id="p5" data-img="img/jewelry5.png">
+              <div class="client">
+                <p>Rubber Baby-Blue Star Clip-Ons</p>
+              </div>
+              <div class="year">
+                <p>60$</p>
+              </div>
+              <div class="description">
+                Fun and quirky clip-on earrings shaped like baby-blue stars.
+                Made from durable rubber, they offer a playful look without
+                piercing. Great for those who love unique, carefree accessories.
+              </div>
+            </div>
+            <div class="project">
+              <div class="client">
+                <p>Soon! 30/06</p>
+              </div>
+              <div class="year">
+                <p>??</p>
+              </div>
+          </div>
+               <div class="project">
+              <div class="client">
+                <p>Soon! 15/07</p>
+              </div>
+              <div class="year">
+                <p>??</p>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const projects = document.querySelectorAll(".project");
+      const preview = document.querySelector(".preview");
+      const previewImg = document.querySelector(".preview-img");
+
+      let allowPreview = false; // 🚫 вначале запрещено
+
+      // ⏱️ Разрешить превью через 5 секунд
+      setTimeout(() => {
+        allowPreview = true;
+      }, 5000);
+
+      projects.forEach((project) => {
+  // при клике: показать описание, скрыть превью
+  project.addEventListener("click", () => {
+    const isActive = project.classList.contains("active");
+    projects.forEach((p) => p.classList.remove("active"));
+
+    if (!isActive) {
+      project.classList.add("active");
+
+      // скрыть превью, даже если оно включено
+      gsap.to(preview, {
+        scale: 0,
+        duration: 0.3,
+        ease: "power2.in",
+      });
+
+      const description = project.querySelector(".description");
+      gsap.fromTo(
+        description,
+        { height: 0, autoAlpha: 0 },
+        {
+          height: "auto",
+          autoAlpha: 1,
+          duration: 0.5,
+          ease: "power2.out",
+        }
+      );
+    }
+  });
+
+  // ✅ добавляем обработчик клика на описание
+  const description = project.querySelector(".description");
+  if (description) {
+    description.addEventListener("click", (e) => {
+      e.stopPropagation(); // не закрывать описание
+      if (project.classList.contains("active")) {
+        const link = project.dataset.link;
+        if (link) {
+          window.location.href = link;
+        }
+      }
+    });
+  }
+
+  // hover preview
+  project.addEventListener("mouseenter", () => {
+    const someIsActive = document.querySelector(".project.active");
+
+    if (!allowPreview || someIsActive) {
+      gsap.to(preview, {
+        scale: 0,
+        duration: 0.3,
+        ease: "power2.in",
+      });
+      return;
+    }
+
+    const imgUrl = project.dataset.img;
+    if (imgUrl) {
+      previewImg.style.backgroundImage = `url(${imgUrl})`;
+      gsap.to(preview, {
+        scale: 1,
+        duration: 0.4,
+        ease: "power2.out",
+      });
+    }
+  });
+
+  project.addEventListener("mouseleave", () => {
+    gsap.to(preview, {
+      scale: 0,
+      duration: 0.3,
+      ease: "power2.in",
+    });
+  });
+});
+
+
+      // 🌀 начальная анимация строк
+      gsap.from(".project", {
+        duration: 2,
+        opacity: 0,
+        y: 40,
+        ease: "power3.inOut",
+        delay: 1,
+        stagger: {
+          amount: 0.8,
+        },
+      });
+      // при клике на описание — если оно открыто, переходим по ссылке
+const description = project.querySelector(".description");
+
+description.addEventListener("click", (e) => {
+  e.stopPropagation(); // чтобы не сработал повторный toggle описания
+
+  if (project.classList.contains("active")) {
+    const link = project.dataset.link;
+    if (link) {
+      window.location.href = link;
+    }
+  }
+});
+    </script>
+    <script>
+      // Fade-in при загрузке страницы
+      window.addEventListener("load", function () {
+        document.body.classList.add("fade-in");
+      });
+
+      // Fade-out при переходе по ссылке
+      document.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", function (e) {
+          const href = link.getAttribute("href");
+
+          // Исключаем якорные ссылки и внешние
+          if (href && !href.startsWith("#") && !link.target) {
+            e.preventDefault();
+            document.body.classList.remove("fade-in"); // На всякий случай
+            document.body.classList.add("fade-out");
+
+            setTimeout(() => {
+              window.location.href = href;
+            }, 800); // Совпадает с transition
+          }
+        });
+      });
+    </script>
+    <script src="store.js"></script>
+  </body>
+</html>

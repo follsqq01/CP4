@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hypnotic Image Gallery Using GSAP Flip | @Codegrid</title>
+    <link rel="stylesheet" href="stylesheets/stylegallery.css" />
+    <link href="transition.css" />
+    <style>
+      body {
+        opacity: 0;
+        transition: opacity 0.8s ease;
+        background: #b73d24; /* начальный фон страницы */
+      }
+
+      body.fade-in {
+        opacity: 1;
+      }
+
+      body.fade-out {
+        opacity: 0;
+        background: #b73d24; /* цвет затухания */
+        transition: opacity 0.8s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout-3-text cosmic-text">
+      THIS IS OUR VISUAL HISTORY AND ARCHIVE!
+    </div>
+
+    <!-- Верхняя навигация по разделам сайта -->
+    <nav class="site-nav">
+      <a href="events.html" class="nav-link link-transition">events</a>
+      <a href="store.html" class="nav-link link-transition">store</a>
+      <a href="gallery.html" class="nav-link link-transition active">gallery</a>
+    </nav>
+
+    <!-- Цифровая навигация внутри галереи -->
+    <nav class="layout-nav">
+      <div class="nav-item"><p id="layout-1-gallery">01</p></div>
+      <div class="nav-item"><p id="layout-2-gallery">02</p></div>
+      <div class="nav-item"><p id="layout-3-gallery">03</p></div>
+    </nav>
+
+    <div class="gallery-container">
+      <div class="gallery-text">
+        <p>THIS IS NOT AN ARCHIVE,<br />BUT OUR HISTORY AND LIFE</p>
+      </div>
+      <div class="gallery layout-1-gallery">
+        <div class="img" id="img1">
+          <img src="img/fotogallery1.png" alt="" />
+        </div>
+        <div class="img" id="img2">
+          <img src="img/fotogallery2.png" alt="" />
+        </div>
+        <div class="img" id="img3">
+          <img src="img/fotogallery3.png" alt="" />
+        </div>
+        <div class="img" id="img4">
+          <img src="img/fotogallery4.png" alt="" />
+        </div>
+
+        <div class="img" id="img5">
+          <img src="img/fotogallery6.png" alt="" />
+        </div>
+        <div class="img" id="img6">
+          <img src="img/fotogallery7.png" alt="" />
+        </div>
+        <div class="img" id="img7">
+          <img src="img/fotogallery8.png" alt="" />
+        </div>
+        <div class="img" id="img8">
+          <img src="img/fotogallery9.png" alt="" />
+        </div>
+
+        <div class="img" id="img9">
+          <img src="img/fotogallery10.png" alt="" />
+        </div>
+        <div class="img" id="img10">
+          <img src="img/fotogallery11.png" alt="" />
+        </div>
+
+        <div class="img" id="img11">
+          <img src="img/fotogallery12.png" alt="" />
+        </div>
+        <div class="img" id="img12">
+          <img src="img/fotogallery13.png" alt="" />
+        </div>
+        <div class="img" id="img13">
+          <img src="img/fotogallery14.png" alt="" />
+        </div>
+        <div class="img" id="img14">
+          <img src="img/fotogallery15.png" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <div class="minimap"></div>
+
+    <div class="img-previews">
+      <img src="img/fotogallery1.png" alt="" />
+      <img src="img/fotogallery2.png" alt="" />
+      <img src="img/fotogallery3.png" alt="" />
+      <img src="img/fotogallery4.png" alt="" />
+      <img src="img/fotogallery6.png" alt="" />
+      <img src="img/fotogallery7.png" alt="" />
+      <img src="img/fotogallery8.png" alt="" />
+      <img src="img/fotogallery9.png" alt="" />
+      <img src="img/fotogallery10.png" alt="" />
+      <img src="img/fotogallery11.png" alt="" />
+      <img src="img/fotogallery12.png" alt="" />
+      <img src="img/fotogallery13.png" alt="" />
+      <img src="img/fotogallery14.png" alt="" />
+      <img src="img/fotogallery15.png" alt="" />
+    </div>
+    <!-- Mobile/Tablet Layout -->
+    <div class="mobile-container">
+      <div class="mobile-img-preview">
+        <img src="img/fotogallery1.png" alt="" />
+      </div>
+      <div class="mobile-minimap">
+        <div class="mobile-indicator"></div>
+        <div class="mobile-items">
+          <div class="mobile-item">
+            <img src="img/fotogallery1.png" alt="" />
+          </div>
+          <div class="mobile-item">
+            <img src="img/fotogallery2.png" alt="" />
+          </div>
+          <div class="mobile-item">
+            <img src="img/fotogallery3.png" alt="" />
+          </div>
+          <div class="mobile-item">
+            <img src="img/fotogallery4.png" alt="" />
+          </div>
+          <div class="mobile-item">
+            <img src="img/fotogallery6.png" alt="" />
+          </div>
+          <div class="mobile-item">
+            <img src="img/fotogallery7.png" alt="" />
+          </div>
+          <div class="mobile-item">
+            <img src="img/fotogallery8.png" alt="" />
+          </div>
+          <div class="mobile-item">
+            <img src="img/fotogallery9.png" alt="" />
+          </div>
+          <div class="mobile-item">
+            <img src="img/fotogallery10.png" alt="" />
+          </div>
+          <div class="mobile-item">
+            <img src="img/fotogallery11.png" alt="" />
+          </div>
+          <div class="mobile-item">
+            <img src="img/fotogallery12.png" alt="" />
+          </div>
+          <div class="mobile-item">
+            <img src="img/fotogallery13.png" alt="" />
+          </div>
+          <div class="mobile-item">
+            <img src="img/fotogallery14.png" alt="" />
+          </div>
+          <div class="mobile-item">
+            <img src="img/fotogallery15.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/CustomEase.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+
+    <script src="gallery.js"></script>
+    <script>
+      // Fade-in при загрузке страницы
+      window.addEventListener("load", function () {
+        document.body.classList.add("fade-in");
+      });
+
+      // Fade-out при переходе по ссылке
+      document.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", function (e) {
+          const href = link.getAttribute("href");
+
+          // Исключаем якорные ссылки и внешние
+          if (href && !href.startsWith("#") && !link.target) {
+            e.preventDefault();
+            document.body.classList.remove("fade-in"); // На всякий случай
+            document.body.classList.add("fade-out");
+
+            setTimeout(() => {
+              window.location.href = href;
+            }, 800); // Совпадает с transition
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Details - Mellow Kink</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Inter, sans-serif;
+      }
+            body {
+        opacity: 0;
+        transition: opacity 0.8s ease;
+        background: #39bb25; /* начальный фон страницы */
+      }
+
+      body.fade-in {
+        opacity: 1;
+      }
+
+      body.fade-out {
+        opacity: 0;
+        background: #39bb25; /* цвет затухания */
+        transition: opacity 0.8s ease;
+      }
+.back-arrow {
+  position: absolute;
+        top: 1.6vh;
+  left: 2vw;
+  font-size: 3vh;
+  text-decoration: none;
+  color: #000;
+  z-index: 3;
+  font-family: "CosmicSans", Arial, sans-serif;
+  transition: transform 0.2s ease;
+}
+
+.back-arrow:hover {
+  transform: translateX(-5px);
+}
+
+      body {
+        background-color: #58be48;
+        color: #000;
+      }
+      .transition {
+        position: absolute;
+        z-index: 2;
+        width: 100%;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        background: #ffffff;
+        -webkit-transform: scaleY(0);
+        transform: scaleY(0);
+      }
+      .wrapper {
+        width: 100%;
+        height: 100%;
+      }
+      nav {
+        display: flex;
+        justify-content: center;
+        gap: 16vw;
+        padding: 2vh 0;
+        background-color: #58be48;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+      }
+
+      .nav-link {
+        color: #000;
+        font-size: 1.8vh;
+        text-transform: uppercase;
+        position: relative;
+        text-decoration: none;
+      }
+
+      .nav-link::before {
+        content: "→";
+        position: absolute;
+        left: -1.5rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .nav-link:hover::before {
+        opacity: 1;
+      }
+
+      .content {
+        padding: 5vw;
+        text-align: center;
+      }
+
+      .content h1 {
+        font-size: 7vh;
+        text-transform: uppercase;
+        letter-spacing: 0.2vw;
+        font-family: "CosmicSans", Arial, sans-serif;
+        margin-bottom: 3vh;
+        line-height: 1;
+        white-space: normal;
+      }
+
+      .content h2 {
+        font-size: 4vh;
+        text-transform: uppercase;
+        font-family: "CosmicSans", Arial, sans-serif;
+        margin: 4vh 0 2vh;
+        letter-spacing: 0.1vw;
+      }
+
+      .content .event-image {
+        width: 60vw;
+        margin: 0 auto 3vh;
+        position: relative;
+      }
+
+      .content .event-image img {
+        width: 100%;
+        height: 100%;
+        margin-bottom: 3%;
+        object-fit: cover;
+      }
+
+      .content .event-text {
+        column-count: 2;
+        column-gap: 6vw;
+        max-width: 60vw;
+        margin: 0 auto;
+        text-align: left;
+      }
+
+      .content .event-description {
+        font-size: 1.8vh;
+                margin-bottom: 12%;
+        line-height: 1.5;
+        break-inside: avoid;
+      }
+
+      .content .highlight-section {
+        max-width: 60vw;
+        margin: 5vh auto;
+        text-align: left;
+        column-count: 2;
+        column-gap: 2vw;
+      }
+
+      .content .highlight-section .highlight-text {
+        font-size: 1.8vh;
+        line-height: 1.5;
+        break-inside: avoid;
+        margin-bottom: 2vh;
+      }
+
+      .content .event-details {
+        max-width: 60vw;
+        margin: 5vh auto;
+        text-align: left;
+        font-size: 1.8vh;
+        line-height: 1.5;
+      }
+
+      .content .event-details p {
+        margin-bottom: 1.5vh;
+      }
+
+      .content .final-call p {
+        margin-bottom: 1vh;
+      }
+
+      @font-face {
+        font-family: "CosmicSans";
+        src: url("fonts/just-cosmic.woff") format("woff2"),
+          url("fonts/just-cosmic.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      @media (max-width: 1024px) {
+        nav {
+          gap: 5vw;
+        }
+
+        .nav-link {
+          font-size: 2vh;
+        }
+
+        .content {
+          padding: 5vw;
+        }
+
+        .content h1 {
+          font-size: 5vh;
+        }
+
+        .content h2 {
+          font-size: 3.5vh;
+        }
+
+        .content .event-image {
+          width: 70vw;
+          height: 70vw;
+        }
+
+        .content .event-text,
+        .content .highlight-section,
+        .content .event-details,
+        .content .final-call {
+          column-count: 1;
+          max-width: 80vw;
+        }
+
+        .content .event-description,
+        .content .highlight-text,
+        .content .event-details,
+        .content .final-call {
+          font-size: 2vh;
+        }
+      }
+
+      @media (max-width: 768px) {
+        nav {
+          gap: 6vw;
+        }
+
+        .nav-link {
+          font-size: 1.8vh;
+        }
+
+        .content {
+          padding: 6vw;
+        }
+
+        .content h1 {
+          font-size: 4.5vh;
+        }
+
+        .content h2 {
+          font-size: 3vh;
+        }
+
+        .content .event-image {
+          width: 80vw;
+          height: 80vw;
+        }
+
+        .content .event-text,
+        .content .highlight-section,
+        .content .event-details,
+        .content .final-call {
+          column-count: 1;
+          max-width: 90vw;
+        }
+
+        .content .event-description,
+        .content .highlight-text,
+        .content .event-details,
+        .content .final-call {
+          font-size: 1.6vh;
+        }
+      }
+    </style>
+  </head>
+  <body data-barba="wrapper">
+    <div class="transition"></div>
+     <div class="page-content">
+    <div class="wrapper">
+      <a href="javascript:history.back()" class="back-arrow" aria-label="Go back">←</a>
+     <nav>
+        <a href="events.html" class="nav-link link-transition active">events</a>
+        <a href="store.html" class="nav-link link-transition">store</a>
+        <a href="gallery.html" class="nav-link link-transition">gallery</a>
+      </nav>
+      <div class="content">
+        <h1>SHOWING THE<br />NEW COLLECTION</h1>
+        <div class="event-image">
+          <img src="img/fotogallery14.png" alt="Event Detail" />
+        </div>
+        <div class="event-text">
+          <div class="event-description">
+            Dive into the vibrant world of our latest event, SHOWING THE NEW
+            COLLECTION! Explore the bold new chains with iconic red apple charms
+            that redefine freedom. Discover how this collection empowers youth
+            to express their unique style.
+          </div>
+          <div class="event-description">
+            These aren't just pieces to wear — they are declarations. Each ring,
+            bracelet, and pendant is crafted to empower, inviting youth to
+            explore and express the many layers of their identity through a lens
+            of elegance and individuality.
+          </div>
+        </div>
+        <!-- <h2>Why This Event Pops</h2>
+        <div class="highlight-section">
+          <div class="highlight-text">
+            This is where style gets loud. Our new collection is all about
+            breaking boundaries with chains that catch every eye and pendants
+            that carry your vibe. Join us to feel the rush of creating a look
+            that’s 100% you.
+          </div>
+          <div class="highlight-text">
+            Layer it, stack it, make it yours. This event is your playground to
+            experiment with our boldest designs. Whether you’re into sleek
+            minimal or all-out glam, we’ve got the pieces to spark your next
+            obsession.
+          </div>
+        </div> -->
+                <div class="event-image">
+ <img src="img/fotogallery7.png">
+        </div>
+       
+        <!-- <h2>Your Night to Shine</h2> -->
+        <div class="event-details">
+          <p>
+            <strong>Date & Time:</strong> June 15, 2025, 6 PM to midnight at The
+            Vibe Loft, Downtown. Get ready for a night that rewrites the rules
+            of style.
+          </p>
+          <p>
+            <strong>What’s Going Down:</strong> Live DJ sets, interactive
+            styling booths, and an exclusive reveal of our game-changing
+            collection. Snag event-only deals on jewelry that’s as bold as you
+            are.
+          </p>
+          <p>
+            <strong>Why You Gotta Be There:</strong> This isn’t just a
+            launch—it’s a vibe. Roll up with your squad, rock your fiercest fit,
+            and let’s celebrate who you are with jewelry that screams
+            individuality.
+          </p>
+        </div>
+      </div>
+    </div>
+    <script src="https://unpkg.com/@barba/core"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="transition.js"></script>
+     <script>
+      // Fade-in при загрузке страницы
+      window.addEventListener("load", function () {
+        document.body.classList.add("fade-in");
+      });
+
+      // Fade-out при переходе по ссылке
+      document.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", function (e) {
+          const href = link.getAttribute("href");
+
+          // Исключаем якорные ссылки и внешние
+          if (href && !href.startsWith("#") && !link.target) {
+            e.preventDefault();
+            document.body.classList.remove("fade-in"); // На всякий случай
+            document.body.classList.add("fade-out");
+
+            setTimeout(() => {
+              window.location.href = href;
+            }, 800); // Совпадает с transition
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

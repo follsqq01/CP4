@@ -1,0 +1,335 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Inter, sans-serif;
+}
+
+body {
+  background-color: #e3e3e3;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.project .description {
+  cursor: pointer;
+}
+.project {
+  position: relative;
+  cursor: pointer;
+}
+.project .description {
+  display: none;
+  position: relative; /* ← изменено с absolute на relative */
+  width: 100%;
+  background-color: #58be48;
+  color: rgb(0, 0, 0);
+  padding: 1vw;
+  font-size: 1.8vh;
+  line-height: 1.4;
+  box-sizing: border-box;
+  margin-top: 0.5vh; /* небольшое расстояние сверху */
+}
+
+.project .client,
+.project .year {
+  display: inline-block;
+
+  padding: 5px 10px;
+}
+.project .year {
+  float: right;
+}
+.project.active .description {
+  display: block;
+}
+.page-content {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  transition: all 0.5s ease;
+}
+
+.left-section {
+  width: 50%;
+  background-color: #000000;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  pointer-events: none;
+  transition: width 0.5s ease, height 0.5s ease;
+}
+
+.left-section img {
+  object-fit: cover;
+  position: absolute;
+  pointer-events: none;
+}
+
+.left-section .overlay {
+  margin-top: 5%;
+  position: relative;
+  text-align: center;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.left-section .logo {
+  position: relative;
+  width: 70%;
+  margin-bottom: 2vh;
+  pointer-events: none;
+}
+
+.left-section p {
+  font-size: 2vh;
+  line-height: 2vh;
+  text-transform: uppercase;
+}
+
+.right-container {
+  width: 50%;
+  background: #e3e3e3;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  transition: width 0.5s ease;
+  height: 100vh;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 14vw;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  padding-left: 3vw;
+  padding-right: 3vw;
+  transition: all 0.5s ease;
+}
+
+.right-container.full nav {
+  justify-content: center;
+}
+
+nav a {
+  color: #000;
+  font-size: 1.8vh;
+  text-transform: uppercase;
+  position: relative;
+  text-decoration: none;
+}
+
+.nav-link {
+  color: #000;
+  font-size: 1.8vh;
+  text-transform: uppercase;
+  position: relative;
+
+  text-decoration: none;
+}
+
+.nav-link::before {
+  content: "→";
+  position: absolute;
+  left: -30%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.nav-link:hover::before {
+  opacity: 1;
+}
+
+.preview {
+  position: fixed;
+  top: 50%;
+  left: 75%; /* центр правой половины экрана */
+  transform: translate(-50%, -50%);
+  width: 40vh;
+  height: 40vh;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 100;
+}
+.preview-img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.container {
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.project {
+  width: 100%;
+  padding-top: 1.5vw;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgb(0, 0, 0);
+  cursor: pointer;
+  background-color: #e3e3e3;
+}
+
+.project > div {
+  flex: none;
+}
+
+.client {
+  flex: 1;
+  text-align: left;
+  padding-right: 1em;
+}
+
+.year {
+  flex: 0 0 auto;
+  text-align: right;
+  min-width: 5em;
+  margin-left: auto;
+}
+
+#header p {
+  opacity: 0.5;
+}
+
+p {
+  font-size: 1.8vh !important;
+  text-transform: uppercase;
+  line-height: 100%;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  nav {
+    gap: 5vw;
+  }
+  nav a,
+  .nav-link {
+    font-size: 2vh;
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    gap: 6vw;
+  }
+  nav a,
+  .nav-link {
+    font-size: 1.8vh;
+  }
+}
+
+/* Планшеты и экраны до 1024px */
+@media (max-width: 1024px) {
+  .page-content,
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+  .left-section,
+  .right-container {
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+  }
+
+  nav {
+    gap: 5vw;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+  }
+
+  .left-section .logo {
+    width: 90%;
+  }
+  .left-section img {
+    width: 100%;
+  }
+  .right-section {
+    padding: 5vw;
+    height: auto;
+  }
+
+  .event .image-container {
+    height: 50vw;
+  }
+
+  .event .text-container {
+    flex-direction: column;
+  }
+
+  .event .text-left,
+  .event .text-right {
+    width: 100%;
+    padding-right: 0;
+  }
+  .preview {
+    top: 70%;
+    left: 50%; /* центр правой половины экрана */
+  }
+  .event h2 {
+    font-size: 6vh;
+    width: 100%;
+    margin-bottom: 3%;
+  }
+
+  .event p {
+    font-size: 2vh;
+  }
+}
+
+/* Мобильные устройства до 768px */
+@media (max-width: 780px) {
+  nav {
+    gap: 6vw;
+    align-items: flex-start;
+    padding-left: 2vw;
+    padding-right: 2vw;
+  }
+
+  nav a,
+  .nav-link {
+    font-size: 2vh;
+    margin-bottom: 1vh;
+  }
+
+  .left-section {
+    display: none;
+
+    .right-section {
+      padding: 6vw;
+      min-height: 100vh;
+    }
+    .preview {
+      top: 70%;
+      left: 50%; /* центр правой половины экрана */
+    }
+  }
+  .event .image-container {
+    height: 60vw;
+  }
+
+  .event h2 {
+    font-size: 4vh;
+  }
+
+  .event p {
+    font-size: 1.4vh;
+  }
+}

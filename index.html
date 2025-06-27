@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Young Kink Preview</title>
+    <link rel="stylesheet" href="stylesheets/preview.css" />
+    <style>
+      .fade-out {
+        opacity: 0;
+        background: #39bb25; /* цвет затухания */
+        transition: opacity 0.8s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-content">
+      <video autoplay muted playsinline loop id="bg-video">
+        <source src="img/rave.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="overlay"></div>
+      <div class="letter k1">K</div>
+      <div class="letter i">I</div>
+      <div class="letter n">N</div>
+      <div class="letter k2">K</div>
+      <div class="center-container hidden">
+        <div class="times">
+          <div class="time-ny">NY: <span id="ny-time"></span></div>
+          <div class="time-msk">MSK: <span id="msk-time"></span></div>
+        </div>
+        <div class="main-text">
+          <p>TRUST YOURSELF, BITCH!</p>
+          <p>@YOUNG_KINK!</p>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="events.html" class="link-transition">EVENTS</a></li>
+            <li><a href="store.html" class="link-transition">SHOP</a></li>
+            <li><a href="gallery.html" class="link-transition">GALLERY</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+      document.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", function (e) {
+          const href = link.getAttribute("href");
+
+          if (!href.startsWith("#") && !link.target) {
+            // Игнорируем якоря и внешние ссылки
+            e.preventDefault();
+            document.body.classList.add("fade-out");
+            setTimeout(() => {
+              window.location.href = href;
+            }, 800); // Должно совпадать с transition
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
