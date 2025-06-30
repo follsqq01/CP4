@@ -3,10 +3,3 @@
 @import url("fonts.css");
 @import url("responcive.css");
 @import url("stylegallery.css");
-
-@font-face {
-  font-family: "JustCosmic";
-  src: url("../fonts/just-cosmic.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}

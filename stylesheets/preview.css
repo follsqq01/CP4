@@ -68,13 +68,13 @@ html {
 }
 
 .bottom-left {
-  top: 100vh;
+  top: 103vh;
   left: 0;
   transform: translate(0, -100%);
 }
 
 .bottom-right {
-  top: 100vh;
+  top: 103vh;
   left: 100vw;
   transform: translate(-100%, -100%);
 }

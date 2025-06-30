@@ -39,6 +39,7 @@ body {
   z-index: 100;
   background-color: transparent;
   flex-direction: row;
+  font-family: Instrumental Sans, sans-serif;
 }
 
 .site-nav .nav-link {
@@ -75,6 +76,7 @@ body {
   color: #58be48;
   pointer-events: auto;
   flex-direction: column;
+  font-family: Instrumental Sans, sans-serif;
 }
 
 .layout-nav .nav-item p {

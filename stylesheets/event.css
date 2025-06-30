@@ -181,6 +181,7 @@ nav {
   padding-left: 3vw;
   padding-right: 3vw;
   transition: all 0.5s ease;
+  font-family: Instrumental Sans, sans-serif;
 }
 
 .right-container.full nav {
@@ -200,7 +201,6 @@ nav a {
   font-size: 1.8vh;
   text-transform: uppercase;
   position: relative;
-
   text-decoration: none;
 }
 
@@ -219,7 +219,7 @@ nav a {
 .right-section {
   padding: 3vw;
   overflow-y: auto;
-  height: calc(100vh - 16.1vh);
+  height: calc(100vh - 15.4vh);
   background-color: #58be48;
 }
 
