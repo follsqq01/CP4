@@ -3,330 +3,65 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Red Apple Ring</title>
-    <!-- Подключение Google Fonts -->
+     <title>Red Apple Ring</title>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+         <link rel="stylesheet" href="stylesheets/reset.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
       rel="stylesheet"
     />
-    <style>
-      body {
-        font-family: "Instrument Sans", sans-serif;
-      }
-      @font-face {
-        font-family: "CosmicSans";
-        src: url("fonts/just-cosmic.woff") format("woff2"),
-          url("fonts/just-cosmic.ttf") format("truetype");
-        font-weight: normal;
-        font-style: normal;
-      }
-      :root {
-        --primary: #b73d24;
-        --text: #000;
-        --muted: #777;
-        --bg: #e3e3e3;
-        --disabled: #ccc;
-      }
-      .back-arrow {
-        position: absolute;
-        top: 1.6vh;
-        left: 2vw;
-        font-size: 3vh;
-        text-decoration: none;
-        color: #000;
-        z-index: 3;
-        font-family: "CosmicSans", Arial, sans-serif;
-        transition: transform 0.2s ease;
-      }
-      nav {
-        display: flex;
-        justify-content: center;
-        gap: 14vw;
-        padding-top: 2vh;
-        padding-bottom: 2vh;
-        padding-left: 3vw;
-        padding-right: 3vw;
-        transition: all 0.5s ease;
-      }
-
-      .right-container.full nav {
-        justify-content: center;
-      }
-
-      nav a {
-        color: #000;
-        font-size: 1.8vh;
-        text-transform: uppercase;
-        position: relative;
-        text-decoration: none;
-      }
-
-      .nav-link {
-        color: #000;
-        font-size: 1.8vh;
-        text-transform: uppercase;
-        position: relative;
-
-        text-decoration: none;
-      }
-
-      .nav-link::before {
-        content: "→";
-        position: absolute;
-        left: -30%;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      .nav-link:hover::before {
-        opacity: 1;
-      }
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        background-color: var(--bg);
-        color: var(--text);
-        display: flex;
-        flex-direction: column;
-        max-height: 100vh;
-      }
-
-      header {
-        display: flex;
-        justify-content: center;
-        gap: 5vw;
-        padding: 2vh 0;
-        font-size: 1.8vh;
-        text-transform: lowercase;
-      }
-
-      header a {
-        text-decoration: none;
-        color: var(--text);
-        border-bottom: 0px solid transparent;
-      }
-
-      header a:hover {
-        border-color: var(--text);
-      }
-
-      .container {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: flex-start;
-        padding: 0 0vw;
-        gap: 2vw;
-      }
-
-      .image {
-        flex: 1 1 40vw;
-        max-width: 100vw;
-      }
-
-      .image img {
-        width: 100%;
-      }
-
-      .info {
-        margin-top: 8%;
-        flex: 1 1 40vw;
-        max-width: 90vw;
-      }
-
-      .title {
-        font-family: "CosmicSans";
-        font-size: 7vh;
-        font-weight: 700;
-        margin-bottom: 2vh;
-      }
-
-      .rating {
-        display: flex;
-        align-items: center;
-        gap: 0.2vw;
-        font-size: 1.8vh;
-        margin-bottom: 2vh;
-      }
-
-      .stars {
-        color: #58be48;
-      }
-
-      .size-select {
-        margin: 3vh 0;
-      }
-
-      .size-select p {
-        font-size: 1.8vh;
-        margin-bottom: 1vh;
-      }
-
-      .sizes {
-        display: flex;
-        gap: 1.5vw;
-      }
-
-      .size-button {
-        width: 3vw;
-        height: 3vw;
-        border: 1px solid var(--text);
-        border-radius: 1000%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.2vw;
-        cursor: pointer;
-        transition: background-color 0.3s ease, color 0.3s ease;
-      }
-
-      .size-button.active {
-        background-color: var(--primary);
-        color: #fff;
-      }
-
-      .size-button.disabled {
-        border-color: var(--disabled);
-        color: var(--disabled);
-        cursor: not-allowed;
-      }
-
-      .description {
-        width: 95%;
-        font-size: 1.8vh;
-        line-height: 1.5;
-        margin-bottom: 3vh;
-      }
-
-      .engraving {
-        margin-bottom: 4vh;
-      }
-
-      .engraving input {
-        width: 70%;
-        margin-top: 1vw;
-        padding: 1vh 1vw;
-        background-color: #e3e3e3;
-        font-size: 1.8vh;
-        border: 1px solid #383838;
-      }
-
-      .order-btn {
-        background-color: var(--primary);
-        color: #e3e3e3;
-        padding: 1.2vh 2vw;
-        font-size: 1.8vh;
-        border: none;
-        border-radius: 1vw;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-      }
-
-      .order-btn:hover {
-        background-color: #b73d24;
-      }
-
-      @media (max-width: 1068px) {
-        body {
-          height: 110vh;
-        }
-        .container {
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .image-block,
-        .info-block {
-          width: 90vw;
-        }
-        .title {
-          font-size: 6vh;
-        }
-        .rating,
-        .description,
-        .engraving input,
-        .order-btn {
-          font-size: 1.8vh;
-        }
-        .size-button {
-          width: 5vw;
-          height: 5vw;
-          font-size: 1vw;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="stylesheets/about-jewelry.css" />
   </head>
-  <body>
-    <a href="javascript:history.back()" class="back-arrow" aria-label="Go back"
-      >←</a
-    >
-    <nav>
-      <a href="events.html" class="nav-link link-transition active">events</a>
-      <a href="store.html" class="nav-link link-transition">store</a>
-      <a href="gallery.html" class="nav-link link-transition">gallery</a>
-    </nav>
-
-    <main class="container">
-      <div class="image">
-        <img src="img/jewelry-more1.png" alt="Red Apple Ring" />
-      </div>
-      <div class="info">
-        <div class="title">
-          RED APPLE <br />
-          ARING CLASSIC
+  <body class="preload">
+    <section class="page-content">
+      <a href="store.html" class="back-arrow" aria-label="Go back">←</a>
+      <nav>
+        <a href="events.html" class="nav-link link-transition active">events</a>
+        <a href="store.html" class="nav-link link-transition">store</a>
+        <a href="gallery.html" class="nav-link link-transition">gallery</a>
+      </nav>
+      <main class="container">
+        <div class="image">
+          <img src="img/jewelry-more1.png" alt="Red Apple Ring" />
         </div>
-        <div class="rating">
-          <div class="stars">★★★★★</div>
-          <div>5.0 — 24 REVIEWS</div>
-        </div>
-
-        <div class="size-select">
-          <p>SIZE</p>
-          <div class="sizes">
-            <div class="size-button">XS</div>
-            <div class="size-button active">S</div>
-            <div class="size-button">M</div>
-            <div class="size-button">L</div>
-            <div class="size-button disabled">XL</div>
+        <div class="info">
+          <div class="title">RED APPLE <br />ARING CLASSIC</div>
+          <div class="rating">
+            <div class="stars">★★★★★</div>
+            <div>5.0 — 24 REVIEWS &nbsp;&nbsp;&nbsp; / 60$</div>
           </div>
+          <div class="size-select">
+            <p>SIZE</p>
+            <div class="sizes">
+              <div class="size-button">XS</div>
+              <div class="size-button active">S</div>
+              <div class="size-button">M</div>
+              <div class="size-button">L</div>
+              <div class="size-button">XL</div>
+            </div>
+          </div>
+          <div class="description">
+            A silver ring in the shape of a red apple that burns with your
+            passion. Silver embraces the bright scarlet fruit, as if whispering:
+            be bold, but with grace. This is your talisman of freedom — for
+            those who want to stand out without shouting. Luxury available to
+            anyone who dreams of leaving a mark.
+          </div>
+          <div class="engraving">
+            <p>ENGRAVING: POSSIBLE</p>
+            <input
+              type="text"
+              placeholder="Write what you want to see on the engraving..."
+            />
+          </div>
+          <button class="order-btn" onclick="window.location.href='404.html'">
+            PLACE AN ORDER IMMEDIATELY
+          </button>
         </div>
-
-        <div class="description">
-          A silver ring in the shape of a red apple that burns with your
-          passion. Silver embraces the bright scarlet fruit, as if whispering:
-          be bold, but with grace. This is your talisman of freedom — for those
-          who want to stand out without shouting. Luxury available to anyone who
-          dreams of leaving a mark.
-        </div>
-
-        <div class="engraving">
-          <p>ENGRAVING: POSSIBLE</p>
-          <input
-            type="text"
-            placeholder="Write what you want to see on the engraving..."
-          />
-        </div>
-
-        <button class="order-btn">PLACE AN ORDER IMMEDIATELY</button>
-      </div>
-    </main>
-
-    <script>
-      const sizeButtons = document.querySelectorAll(
-        ".size-button:not(.disabled)"
-      );
-
-      sizeButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-          sizeButtons.forEach((btn) => btn.classList.remove("active"));
-          button.classList.add("active");
-        });
-      });
+      </main>
+    </section>
     </script>
+    <script src="store.js"></script>
+    <script src="transition.js"></script>
   </body>
 </html>

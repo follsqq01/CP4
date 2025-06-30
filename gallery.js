@@ -35,7 +35,7 @@ function switchLayout(newLayout) {
     switchLayoutHandler(newLayout);
   }
 }
-
+// Основной обработчик смены состояний с флип-анимацией
 function switchLayoutHandler(newLayout) {
   const state = Flip.getState(gallery.querySelectorAll(".img"));
 
@@ -98,15 +98,12 @@ function handleScroll() {
   const windowHeight = window.innerHeight;
   const scrollY = window.scrollY;
 
-  // Calculate synchronized scroll progress
   currentScrollProgress = scrollY / (imgPreviewsHeight - windowHeight);
   currentScrollProgress = Math.min(Math.max(currentScrollProgress, 0), 1);
 
-  // Synchronized translation for gallery
   const galleryTranslateY =
     -currentScrollProgress * (galleryHeight - windowHeight) * 1.3;
 
-  // Synchronized translation for minimap
   const minimapTranslateY =
     currentScrollProgress * (windowHeight - minimap.offsetHeight) * 0.7;
 
@@ -123,7 +120,6 @@ function handleScroll() {
   });
 }
 
-// Add event listener with throttling
 let scrollTimeout;
 window.addEventListener("scroll", () => {
   if (activeLayout === "layout-2-gallery") {
@@ -138,7 +134,7 @@ window.addEventListener("load", () => {
   }
 });
 
-// Mobile/Tablet Minimap Script
+// мобиьная адаптация
 function initMobileMinimap() {
   if (window.innerWidth <= 900) {
     const container = document.querySelector(".mobile-container");
@@ -242,7 +238,7 @@ function initMobileMinimap() {
       },
       { passive: false }
     );
-
+    // Горизонтальный скролл мышью
     let touchStartY = 0;
     container.addEventListener("touchstart", (e) => {
       touchStartY = e.touches[0].clientY;
@@ -302,10 +298,10 @@ const gallery = document.querySelector(".gallery");
 const layout3Text = document.querySelector(".cosmic-text");
 
 function showLayout(layoutName) {
-  // Переключение класса галереи
+  // Переключение состояний галереи
   gallery.className = "gallery " + layoutName;
 
-  // Появление/исчезновение текста в layout-3
+  // Появление/исчезновение текста в третьем состоянии
   if (layoutName === "layout-3-gallery") {
     layout3Text.style.visibility = "visible";
     layout3Text.style.opacity = "1";
@@ -313,24 +309,15 @@ function showLayout(layoutName) {
     layout3Text.style.opacity = "0";
     setTimeout(() => {
       layout3Text.style.visibility = "hidden";
-    }, 800); // задержка соответствует CSS transition
+    }, 800);
   }
 
-  // Управление скроллингом (если используешь Lenis)
   if (layoutName === "layout-2-gallery") {
-    lenis.start(); // включить прокрутку
+    lenis.start();
   } else {
-    lenis.stop(); // выключить прокрутку
-    window.scrollTo(0, 0); // вернуть наверх
+    lenis.stop();
+    window.scrollTo(0, 0);
   }
-
-  // (опционально) если не используешь Lenis:
-  // if (layoutName === "layout-2-gallery") {
-  //   document.body.style.overflowY = "auto";
-  // } else {
-  //   document.body.style.overflowY = "hidden";
-  //   window.scrollTo(0, 0);
-  // }
 }
 
 layout1.addEventListener("click", () => showLayout("layout-1-gallery"));

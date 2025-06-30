@@ -3,450 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- В <head> -->
-    <style>
-      body {
-        opacity: 0;
-        transition: opacity 0.8s ease;
-        background: #39bb25; /* начальный фон страницы */
-      }
-
-      body.fade-in {
-        opacity: 1;
-      }
-
-      body.fade-out {
-        opacity: 0;
-        background: #39bb25; /* цвет затухания */
-        transition: opacity 0.8s ease;
-      }
-    </style>
-
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: Inter, sans-serif;
-      }
-      #subscribe-banner {
-        position: fixed;
-        right: -0.1vw;
-        bottom: -0.5vw;
-        width: 27vw;
-        background: #eaeaea;
-        padding: 1.5vw 1.5vw 1.2vw 1.5vw;
-        z-index: 9999;
-        font-family: Arial, sans-serif;
-        display: flex;
-        flex-direction: column;
-        gap: 1vw;
-        opacity: 1;
-        transition: opacity 0.6s;
-      }
-
-      #subscribe-banner.hide {
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      .subscribe-title {
-        font-weight: 600;
-        font-size: 2vh;
-        margin-bottom: -0.5vw;
-      }
-
-      .subscribe-desc {
-        font-size: 1.8vh;
-        color: #222;
-      }
-
-      .subscribe-form {
-        display: flex;
-        flex-direction: column;
-        gap: 0.7vw;
-      }
-
-      .subscribe-input {
-        padding: 0.7vw 1vw;
-        background: #eaeaea;
-        border-radius: 0.3vw;
-        font-size: 1.8vh;
-        outline: none;
-      }
-
-      .subscribe-btn {
-        background: #b73d24;
-        color: #ebebeb;
-        border: none;
-        padding: 0.7vw 0;
-        font-size: 1.5vh;
-        font-weight: 600;
-        cursor: pointer;
-      }
-
-      .subscribe-close {
-        position: absolute;
-        top: 0.7vw;
-        right: 0.7vw;
-        background: none;
-        border: none;
-        font-size: 2.2vh;
-        color: #222;
-        cursor: pointer;
-        line-height: 1;
-        padding: 0 0.5vw;
-      }
-
-      body {
-        background-color: #58be48;
-      }
-      .transition {
-        position: absolute;
-        z-index: 2;
-        width: 100%;
-        height: 100vh;
-        top: 0;
-        left: 0;
-        pointer-events: none;
-        background: #ffffff;
-        -webkit-transform: scaleY(0);
-        transform: scaleY(0);
-      }
-      .wrapper {
-        width: 100%;
-        height: 100%;
-      }
-      .container {
-        display: flex;
-        width: 100%;
-        height: 100vh;
-        transition: all 0.5s ease;
-      }
-
-      .left-section {
-        width: 50%;
-        background-color: #000000;
-        color: #fff;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
-        pointer-events: none;
-        transition: width 0.5s ease, height 0.5s ease;
-      }
-
-      .left-section video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 0.7;
-        pointer-events: none;
-      }
-
-      .left-section .overlay {
-        position: relative;
-        text-align: center;
-        z-index: 1;
-        margin-top: 5%;
-        pointer-events: none;
-      }
-
-      .left-section .logo {
-        width: 70%;
-        margin-bottom: 2vh;
-        pointer-events: none;
-      }
-
-      .left-section p {
-        font-size: 1.8vh;
-        text-transform: uppercase;
-      }
-
-      .right-container {
-        width: 50%;
-        transition: width 0.5s ease;
-      }
-
-      .right-container.full {
-        width: 100%;
-      }
-
-      nav {
-        display: flex;
-        justify-content: center;
-        gap: 14vw;
-        padding-top: 2vh;
-        padding-bottom: 2vh;
-        padding-left: 3vw;
-        padding-right: 3vw;
-        background-color: #58be48;
-        transition: all 0.5s ease;
-      }
-
-      .right-container.full nav {
-        justify-content: center;
-      }
-
-      nav a {
-        color: #000;
-        font-size: 1.8vh;
-        text-transform: uppercase;
-        position: relative;
-        position: relative;
-        text-decoration: none;
-      }
-
-      .nav-link {
-        color: #000;
-        font-size: 1.8vh;
-        text-transform: uppercase;
-        position: relative;
-        text-decoration: none;
-      }
-
-      .nav-link::before {
-        content: "→";
-        position: absolute;
-        left: -30%;
-        opacity: 0;
-
-        transition: opacity 0.3s ease;
-      }
-
-      .nav-link:hover::before {
-        opacity: 1;
-      }
-
-      .right-section {
-        padding: 3vw;
-        overflow-y: auto;
-        height: calc(100vh - 6.1vh);
-        background-color: #58be48;
-      }
-
-      /* @font-face {
-        font-family: "CosmicSans";
-        src: url("fonts/just-cosmic.woff") format("woff2"),
-          url("fonts/just-cosmic.ttf") format("truetype");
-        font-weight: normal;
-        font-style: normal;
-      } */
-
-      .event {
-        margin-bottom: 5vh;
-      }
-
-      .event .image-container {
-        width: 100%;
-        height: 30vw;
-        position: relative;
-        margin-bottom: 2vh;
-      }
-
-      .event .image-container a {
-        position: relative;
-        display: block;
-        width: 100%;
-        height: 100%;
-        text-decoration: none;
-      }
-
-      .event img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: filter 0.3s ease;
-      }
-
-      .image-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(255, 69, 32, 0.464);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      .event .more-text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: #000;
-        background-color: #fff;
-        border-radius: 20px;
-        font-size: 1.8vh;
-        text-transform: uppercase;
-        padding: 0.5vw 1vw;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      .event .image-container:hover .image-overlay {
-        opacity: 1;
-      }
-
-      .event .image-container:hover .more-text {
-        opacity: 1;
-      }
-
-      .event .image-container:hover img {
-        filter: brightness(0.5);
-      }
-
-      .event .image-container:hover .more-text {
-        opacity: 1;
-      }
-
-      .event .image-container:hover img {
-        filter: brightness(0.5);
-        transition: filter 0.3s ease;
-      }
-
-      .event .text-container {
-        display: flex;
-        align-items: flex-start;
-      }
-
-      .event .text-left {
-        width: 40%;
-        padding-right: 2vw;
-      }
-
-      .event .text-right {
-        width: 60%;
-      }
-
-      .event h2 {
-        font-size: 7vh;
-        text-transform: uppercase;
-        font-family: "CosmicSans";
-        line-height: 1;
-      }
-
-      .event p {
-        margin-left: 30%;
-        font-size: 1.8vh;
-        line-height: 1.5;
-      }
-
-      @media (max-width: 1024px) {
-        .container {
-          flex-direction: column;
-          height: auto;
-        }
-
-        .left-section {
-          width: 100%;
-          height: 100vh;
-        }
-
-        .right-container {
-          width: 100%;
-        }
-
-        .right-container.full {
-          width: 100%;
-        }
-
-        nav {
-          gap: 5vw;
-        }
-
-        nav a {
-          font-size: 2vh;
-        }
-
-        .right-section {
-          padding: 5vw;
-          height: auto;
-        }
-
-        .event .image-container {
-          height: 50vw;
-        }
-
-        .event .more-text {
-          font-size: 2vh;
-        }
-
-        .event .text-container {
-          flex-direction: column;
-        }
-
-        .event .text-left,
-        .event .text-right {
-          width: 100%;
-          padding-right: 0;
-        }
-
-        .event h2 {
-          font-size: 10vh;
-          width: 80%;
-          margin-bottom: 3%;
-        }
-
-        .event p {
-          font-size: 2vh;
-        }
-      }
-
-      @media (max-width: 768px) {
-        nav {
-          gap: 6vw;
-        }
-
-        nav a {
-          font-size: 1.8vh;
-        }
-
-        .left-section {
-          height: 100vh;
-        }
-
-        .left-section .logo {
-          width: 60%;
-        }
-
-        .left-section p {
-          font-size: 1.6vh;
-        }
-
-        .right-section {
-          padding: 6vw;
-        }
-
-        .event .image-container {
-          height: 60vw;
-        }
-
-        .event .more-text {
-          font-size: 2.5vh;
-        }
-
-        .event h2 {
-          font-size: 6vh;
-        }
-
-        .event p {
-          font-size: 1.6vh;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="stylesheets/reset.css" />
+    <link rel="stylesheet" href="stylesheets/event.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
   </head>
-
   <body>
-    <!-- Плашка для перехода -->
-
     <div id="subscribe-banner">
       <div class="subscribe-title">10% OFF YOUR PURCHASE</div>
       <div class="subscribe-desc">
@@ -466,11 +30,9 @@
         &times;
       </button>
     </div>
-
-    <!-- Основной контент страницы -->
     <div class="page-content">
       <div class="container">
-        <!-- Левая секция с видео и оверлеем -->
+        <!-- левая часть -->
         <div class="left-section" id="leftSection">
           <video autoplay muted loop>
             <source src="img/rave.mp4" type="video/mp4" />
@@ -486,7 +48,7 @@
           </div>
         </div>
 
-        <!-- Правая секция с навигацией и списком событий -->
+        <!-- Правая часть -->
         <div class="right-container" id="rightContainer">
           <nav>
             <a href="events.html" class="nav-link link-transition active"
@@ -497,7 +59,7 @@
           </nav>
 
           <div class="right-section" id="rightSection">
-            <!-- Событие 1 -->
+            <!-- ивент 1 -->
             <div class="event">
               <div class="image-container">
                 <a href="event-details2.html" class="more-link">
@@ -521,7 +83,7 @@
               </div>
             </div>
 
-            <!-- Событие 2 -->
+            <!-- ивент 2 -->
             <div class="event">
               <div class="image-container">
                 <a href="event-details1.html" class="more-link">
@@ -544,51 +106,36 @@
                 </div>
               </div>
             </div>
+            <!-- коллаборация. ивент 3 -->
+            <div class="event">
+              <div class="image-container">
+                <a href="event-details3.html" class="more-link">
+                  <img src="img/forevent1.png" alt="Event 1" />
+                  <div class="image-overlay"></div>
+                  <span class="more-text">more about it@!</span>
+                </a>
+              </div>
+              <div class="text-container">
+                <div class="text-left">
+                  <h2>WITCH’S HAT & YOUNG KINK</h2>
+                </div>
+                <div class="text-right">
+                  <p>
+                    Step into a world where childhood wonder meets grown-up
+                    defiance — YOUNG KINK X WITCH’S HAT conjures silver charms
+                    and talismans for the beautifully weird. Nostalgic, bold, a
+                    little haunted — it’s jewelry for those who never stopped
+                    casting spells or coloring outside the lines.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script>
-      // Fade-in при загрузке страницы
-      window.addEventListener("load", function () {
-        document.body.classList.add("fade-in");
-      });
-
-      // Fade-out при переходе по ссылке
-      document.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", function (e) {
-          const href = link.getAttribute("href");
-
-          // Исключаем якорные ссылки и внешние
-          if (href && !href.startsWith("#") && !link.target) {
-            e.preventDefault();
-            document.body.classList.remove("fade-in"); // На всякий случай
-            document.body.classList.add("fade-out");
-
-            setTimeout(() => {
-              window.location.href = href;
-            }, 800); // Совпадает с transition
-          }
-        });
-      });
-    </script>
-    <script>
-      const banner = document.getElementById("subscribe-banner");
-      const closeBtn = document.getElementById("subscribe-close");
-      const subscribeForm = document.getElementById("subscribe-form");
-
-      // Закрытие по крестику
-      closeBtn.addEventListener("click", () => {
-        banner.classList.add("hide");
-      });
-
-      // Закрытие по отправке формы
-      subscribeForm.addEventListener("submit", (e) => {
-        e.preventDefault(); // Не отправляем форму по-настоящему
-        banner.classList.add("hide");
-        // Дополнительно можешь отправить форму с fetch/AJAX, если нужно
-      });
-    </script>
+    <script src="transition.js"></script>
+    <script src="event(and-more-event).js"></script>
   </body>
 </html>

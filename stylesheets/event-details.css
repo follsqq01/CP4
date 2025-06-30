@@ -1,0 +1,341 @@
+@font-face {
+  font-family: "CosmicSans";
+  src: url("fonts/just-cosmic.woff") format("woff2"),
+    url("fonts/just-cosmic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  background: #39bb25;
+  font-family: Instrumental Sans, sans-serif;
+}
+
+body.fade-in {
+  opacity: 1;
+}
+
+body.fade-out {
+  opacity: 0;
+  background: #39bb25;
+  transition: opacity 0.8s ease;
+}
+.back-arrow {
+  position: absolute;
+  top: 1.6vh;
+  left: 2vw;
+  font-size: 3vh;
+  text-decoration: none;
+  color: #000;
+  z-index: 3;
+  font-family: "JustCosmic", sans-serif;
+  transition: transform 0.2s ease;
+}
+
+.back-arrow:hover {
+  transform: translateX(-5px);
+}
+body {
+  background-color: #58be48;
+  color: #000;
+}
+.transition {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background: #ffffff;
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
+}
+.wrapper {
+  width: 100%;
+  height: 100%;
+}
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 16vw;
+  padding: 2vh 0;
+  background-color: #58be48;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.nav-link {
+  color: #000;
+  font-size: 1.8vh;
+  text-transform: uppercase;
+  position: relative;
+  text-decoration: none;
+}
+
+.nav-link::before {
+  content: "→";
+  position: absolute;
+  left: -1.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.nav-link:hover::before {
+  opacity: 1;
+}
+
+.content {
+  padding: 5vw;
+  text-align: center;
+}
+.content h1 {
+  font-size: 7vh;
+  text-transform: uppercase;
+  letter-spacing: 0.2vw;
+  font-family: "JustCosmic", sans-serif;
+  margin-bottom: 3vh;
+  line-height: 1;
+  white-space: normal;
+}
+
+.content h2 {
+  font-size: 4vh;
+  text-transform: uppercase;
+  font-family: "JustCosmic", sans-serif;
+  margin: 4vh 0 2vh;
+  letter-spacing: 0.1vw;
+}
+
+.content .event-image {
+  width: 60vw;
+  margin: 0 auto 3vh;
+  position: relative;
+}
+
+.content .event-image img {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 3%;
+  object-fit: cover;
+}
+
+.content .event-text {
+  column-count: 2;
+  column-gap: 6vw;
+  max-width: 60vw;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.content .event-description {
+  font-size: 1.8vh;
+  margin-bottom: 12%;
+  line-height: 1.5;
+  break-inside: avoid;
+}
+
+.content .highlight-section {
+  max-width: 60vw;
+  margin: 5vh auto;
+  text-align: left;
+  column-count: 2;
+  column-gap: 2vw;
+}
+
+.content .highlight-section .highlight-text {
+  font-size: 1.8vh;
+  line-height: 1.5;
+  break-inside: avoid;
+  margin-bottom: 2vh;
+}
+
+.content .event-details {
+  max-width: 60vw;
+  margin: 5vh auto;
+  text-align: left;
+  font-size: 1.8vh;
+  line-height: 1.5;
+}
+
+.content .event-details p {
+  margin-bottom: 1.5vh;
+}
+
+.content .final-call p {
+  margin-bottom: 1vh;
+}
+
+@media (max-width: 1024px) {
+  nav {
+    gap: 5vw;
+  }
+
+  .nav-link {
+    font-size: 2vh;
+  }
+
+  .content {
+    padding: 5vw;
+  }
+
+  .content h1 {
+    font-size: 5vh;
+  }
+
+  .content h2 {
+    font-size: 3.5vh;
+  }
+
+  .content .event-image {
+    width: 70vw;
+    height: 70vw;
+  }
+
+  .content .event-text,
+  .content .highlight-section,
+  .content .event-details,
+  .content .final-call {
+    column-count: 1;
+    max-width: 80vw;
+  }
+
+  .content .event-description,
+  .content .highlight-text,
+  .content .event-details,
+  .content .final-call {
+    font-size: 2vh;
+  }
+  .slider-container {
+    width: 90vw;
+    height: 55vw;
+    margin: 5vh auto;
+    overflow: visible;
+    position: relative;
+  }
+
+  .slider-arrow {
+    font-size: 5vh;
+  }
+
+  .slider-arrow.left {
+    left: -4vw;
+  }
+
+  .slider-arrow.right {
+    right: -4vw;
+  }
+
+  .slide {
+    min-width: 90%;
+    height: 100%;
+    object-fit: cover;
+    padding-right: 0;
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    gap: 6vw;
+  }
+
+  .nav-link {
+    font-size: 1.8vh;
+  }
+
+  .content {
+    padding: 6vw;
+  }
+
+  .content h1 {
+    font-size: 4.5vh;
+  }
+
+  .content h2 {
+    font-size: 3vh;
+  }
+
+  .content .event-image {
+    width: 80vw;
+    height: 80vw;
+  }
+
+  .content .event-text,
+  .content .highlight-section,
+  .content .event-details,
+  .content .final-call {
+    column-count: 1;
+    max-width: 90vw;
+  }
+
+  .content .event-description,
+  .content .highlight-text,
+  .content .event-details,
+  .content .final-call {
+    font-size: 1.6vh;
+  }
+  .slider-arrow.left {
+    left: -3vw;
+  }
+
+  .slider-arrow.right {
+    right: -3vw;
+  }
+
+  .slider-arrow {
+    font-size: 4vh;
+  }
+}
+.slider-container {
+  position: relative;
+  width: 60vw;
+  height: 40vw;
+  margin: 5vh auto;
+  overflow: visible;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+  width: 100%;
+}
+
+.slide {
+  padding-right: 5%;
+  min-width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide.active {
+  display: block;
+}
+
+.slider-arrow {
+  position: absolute;
+  font-size: 5vh;
+  background: none;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  z-index: 5;
+  font-family: "JustCosmic", sans-serif;
+  transition: transform 0.2s ease;
+  pointer-events: all;
+}
+
+.slider-arrow.left {
+  left: 25%;
+}
+
+.slider-arrow.right {
+  right: 25%;
+}
+
+.slider-arrow:hover {
+  transform: scale(1.1);
+}

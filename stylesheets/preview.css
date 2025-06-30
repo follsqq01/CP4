@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "CosmicSans";
+  src: url("fonts/just-cosmic.woff") format("woff2"),
+    url("fonts/just-cosmic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body,
 html {
   margin: 0;
@@ -5,9 +13,13 @@ html {
   height: 100%;
   width: 100%;
   overflow: hidden;
-  font-family: Arial, sans-serif;
+  font-family: Instrumental Sans, sans-serif;
 }
-
+.fade-out {
+  opacity: 0;
+  background: #39bb25;
+  transition: opacity 0.8s ease;
+}
 #bg-video {
   position: fixed;
   top: 50%;
@@ -18,7 +30,7 @@ html {
   height: auto;
   transform: translate(-50%, -50%);
   z-index: -1;
-  opacity: 1; /* Показываем фон сразу */
+  opacity: 1;
   transition: opacity 1s ease-out;
 }
 
@@ -70,11 +82,10 @@ html {
 .letter {
   position: absolute;
   font-size: 1500%;
-  font-weight: bold;
   color: white;
   z-index: 10;
   transition: all 2s ease-in-out;
-  font-family: "CosmicSans";
+  font-family: "JustCosmic", sans-serif;
   padding: 1.2%;
 }
 
@@ -85,7 +96,7 @@ html {
   height: 100%;
   width: 100%;
   background-color: black !important;
-  opacity: 1; /* Полная непрозрачность */
+  opacity: 1;
   z-index: 5;
   transition: opacity 2s ease-in-out;
 }
@@ -102,8 +113,8 @@ html {
   height: auto;
   opacity: 0;
   transition: opacity 1s ease-out;
-  z-index: 5; /* Текст поверх видео */
-  color: white; /* Для видимости текста */
+  z-index: 5;
+  color: white;
 }
 
 .center-container.visible {
@@ -159,13 +170,6 @@ nav ul li a {
   font-size: 1.8vh;
 }
 
-@font-face {
-  font-family: "CosmicSans";
-  src: url("fonts/just-cosmic.woff") format("woff2"),
-    url("fonts/just-cosmic.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
 .header {
   position: absolute;
   width: 100%;
@@ -240,6 +244,26 @@ nav ul li a {
   }
   .gallery {
     height: calc(100vh - 10vw);
+  }
+  .letter {
+    font-size: 700%;
+  }
+  .center-container {
+    height: 50%;
+  }
+  .times {
+    opacity: 0;
+  }
+  .main-text {
+    opacity: 0;
+  }
+  nav ul {
+    position: absolute;
+    font-size: 1.8vh;
+    line-height: 100%;
+    text-align: center;
+    padding: 0%;
+    left: 45%;
   }
 }
 

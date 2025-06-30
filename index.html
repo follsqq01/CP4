@@ -4,14 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Young Kink Preview</title>
+    <link rel="stylesheet" href="stylesheets/reset.css" />
     <link rel="stylesheet" href="stylesheets/preview.css" />
-    <style>
-      .fade-out {
-        opacity: 0;
-        background: #39bb25; /* цвет затухания */
-        transition: opacity 0.8s ease;
-      }
-    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="page-content">
@@ -42,22 +40,7 @@
         </nav>
       </div>
     </div>
-    <script src="script.js"></script>
-    <script>
-      document.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", function (e) {
-          const href = link.getAttribute("href");
-
-          if (!href.startsWith("#") && !link.target) {
-            // Игнорируем якоря и внешние ссылки
-            e.preventDefault();
-            document.body.classList.add("fade-out");
-            setTimeout(() => {
-              window.location.href = href;
-            }, 800); // Должно совпадать с transition
-          }
-        });
-      });
-    </script>
+    <script src="preview.js"></script>
+    <script src="transition.js"></script>
   </body>
 </html>

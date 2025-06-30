@@ -1,12 +1,27 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Inter, sans-serif;
+@font-face {
+  font-family: "CosmicSans";
+  src: url("fonts/just-cosmic.woff") format("woff2"),
+    url("fonts/just-cosmic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 body {
-  background-color: #e3e3e3;
+  opacity: 0;
+  transition: opacity 2s ease;
+  background: #58be48;
+  font-family: Instrumental Sans, sans-serif;
+}
+
+body.fade-in {
+  opacity: 1;
+}
+body.fade-out {
+  opacity: 0;
+  background: #58be48;
+}
+body {
+  background-color: #58be48;
   width: 100%;
   height: 100%;
   min-height: 100vh;
@@ -17,13 +32,16 @@ body {
 .project .description {
   cursor: pointer;
 }
+.page-content {
+  background-color: #58be48;
+}
 .project {
   position: relative;
   cursor: pointer;
 }
 .project .description {
   display: none;
-  position: relative; /* ← изменено с absolute на relative */
+  position: relative;
   width: 100%;
   background-color: #58be48;
   color: rgb(0, 0, 0);
@@ -31,7 +49,7 @@ body {
   font-size: 1.8vh;
   line-height: 1.4;
   box-sizing: border-box;
-  margin-top: 0.5vh; /* небольшое расстояние сверху */
+  margin-top: 0.5vh;
 }
 
 .project .client,
@@ -71,6 +89,7 @@ body {
 .left-section img {
   object-fit: cover;
   position: absolute;
+  width: 70vw;
   pointer-events: none;
 }
 
@@ -153,7 +172,7 @@ nav a {
 .preview {
   position: fixed;
   top: 50%;
-  left: 75%; /* центр правой половины экрана */
+  left: 75%;
   transform: translate(-50%, -50%);
   width: 40vh;
   height: 40vh;
@@ -214,17 +233,6 @@ p {
   line-height: 100%;
 }
 
-/* Media Queries */
-@media (max-width: 1024px) {
-  nav {
-    gap: 5vw;
-  }
-  nav a,
-  .nav-link {
-    font-size: 2vh;
-  }
-}
-
 @media (max-width: 768px) {
   nav {
     gap: 6vw;
@@ -235,7 +243,6 @@ p {
   }
 }
 
-/* Планшеты и экраны до 1024px */
 @media (max-width: 1024px) {
   .page-content,
   .container {
@@ -248,7 +255,10 @@ p {
     min-height: 100vh;
     height: auto;
   }
-
+  nav a,
+  .nav-link {
+    font-size: 2vh;
+  }
   nav {
     gap: 5vw;
     padding-top: 3vh;
@@ -280,8 +290,8 @@ p {
     padding-right: 0;
   }
   .preview {
-    top: 70%;
-    left: 50%; /* центр правой половины экрана */
+    top: 75%;
+    left: 50%;
   }
   .event h2 {
     font-size: 6vh;
@@ -294,7 +304,6 @@ p {
   }
 }
 
-/* Мобильные устройства до 768px */
 @media (max-width: 780px) {
   nav {
     gap: 6vw;
@@ -317,8 +326,8 @@ p {
       min-height: 100vh;
     }
     .preview {
-      top: 70%;
-      left: 50%; /* центр правой половины экрана */
+      top: 75%;
+      left: 50%;
     }
   }
   .event .image-container {
