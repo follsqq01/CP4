@@ -219,7 +219,7 @@ nav a {
 .right-section {
   padding: 3vw;
   overflow-y: auto;
-  height: calc(100vh - 13.1vh);
+  height: calc(100vh - 16.1vh);
   background-color: #58be48;
 }
 
